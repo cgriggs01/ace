@@ -1,11 +1,16 @@
 "use strict";
 
+var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
 module.exports = {
     mode: 'development',
-    entry: "./demo.js",
+    entry: {
+        packed: "./demo.js",
+        unpacked: "./demo.unpacked.js",
+    },
     output: {
         path: __dirname + "/dist",
-        filename: "bundle.js"
+        filename: "[name]-bundle.js"
     },
     node: {
         global: false,
@@ -23,5 +28,8 @@ module.exports = {
         contentBase: __dirname,
         compress: true,
         port: 9000
-    }
+    },
+    plugins: [
+        new BundleAnalyzerPlugin()
+    ]
 };

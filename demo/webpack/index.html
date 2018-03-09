@@ -1,4 +1,10 @@
 <meta charset="utf-8">
 <body>
 </body>
-<script src="bundle.js"></script>
+<script>
+    var mode = location.search.slice(1)
+    if (mode == "packed" || mode == "unpacked")
+        document.write('<script src="' + mode + '-bundle.js"><\/script>')
+</script>
+<a href="?packed">demo for loading ace from ace-builds repository</a><br>
+<a href="?unpacked">demo for loading ace repository</a>

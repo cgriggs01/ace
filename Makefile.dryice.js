@@ -364,7 +364,7 @@ function buildAce(options, callback) {
         buildSubmodule(options, {
             projectType: "mode",
             require: ["ace/mode/" + name]
-        }, "mode-" + name, addCb());
+        }, "mode/" + name, addCb());
     });
     // snippets
     modeNames.forEach(function(name) {
@@ -380,21 +380,21 @@ function buildAce(options, callback) {
         buildSubmodule(options, {
             projectType: "theme",
             require: ["ace/theme/" + name]
-        }, "theme-" +  name, addCb());
+        }, "theme/" +  name, addCb());
     });
     // keybindings
     ["vim", "emacs"].forEach(function(name) {
         buildSubmodule(options, {
             projectType: "keybinding",
             require: ["ace/keyboard/" + name ]
-        }, "keybinding-" + name, addCb());
+        }, "keybinding/" + name, addCb());
     });
     // extensions
     jsFileList("lib/ace/ext").forEach(function(name) {
         buildSubmodule(options, {
             projectType: "ext",
             require: ["ace/ext/" + name]
-        }, "ext-" + name, addCb());
+        }, "ext/" + name, addCb());
     });
     // workers
     workers("lib/ace/mode").forEach(function(name) {
