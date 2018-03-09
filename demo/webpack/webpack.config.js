@@ -1,9 +1,9 @@
 "use strict";
 
-var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+var BundleAnalyzerPlugin = require("webpack-bundle-analyzer-sunburst").BundleAnalyzerPlugin;
 
 module.exports = {
-    mode: 'development',
+    mode: "development",
     entry: {
         unpacked: "./demo.unpacked.js",
     },
