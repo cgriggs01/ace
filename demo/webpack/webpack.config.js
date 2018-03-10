@@ -5,12 +5,12 @@ var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlug
 module.exports = {
     mode: 'development',
     entry: {
-        packed: "./demo.js",
         unpacked: "./demo.unpacked.js",
     },
     output: {
         path: __dirname + "/dist",
-        filename: "[name]-bundle.js"
+        filename: "[name]-bundle.js",
+        chunkFilename: "[name].[hash].bundle.js"
     },
     node: {
         global: false,
@@ -33,3 +33,14 @@ module.exports = {
         new BundleAnalyzerPlugin()
     ]
 };
+
+if (!module.parent) {
+    var webpack = require("webpack");
+    webpack(module.exports, function(err, stats) {
+        if (err || stats.hasErrors()) {
+            var info = stats.toJson();
+            process.stdout.write(info.errors[0]);
+            process.exit(0);
+        }
+    });
+}
